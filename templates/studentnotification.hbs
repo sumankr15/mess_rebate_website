@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Notification - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/studentnotification.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<header>
+        <nav>
+            <a href="/studenthome" class="logo">Mess Rebate And Token System</a>
+            <ul>
+                <li><a href="/studenthome">Home</a></li>
+                <li><a href="/studentmenu">Menu</a></li>
+                <li><a href="/studentfeedback">Feedback</a></li>
+                <li><a href="/studentnotification">Notification</a></li>
+                <li><a href="/rebates">Rebates</a></li>
+                <li><a href="/studentcalendar">Attendance</a></li>
+                <li><a href="/studentform">Form</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+    
+
+    <main>
+        <h1>Notifications</h1>
+
+        <ul>
+            {{#each notifications}}
+                <li>
+                    <div class="notification-header">
+                        <strong>{{this.title}}</strong> <span class="notification-date">({{this.date}})</span>
+                    </div>
+                    <p>{{this.content}}</p>
+                </li>
+            {{/each}}
+        </ul>
+    </main>
+
+</body>
+    <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+</html>

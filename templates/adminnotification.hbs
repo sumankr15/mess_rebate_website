@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Notification - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/adminnotification.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<header>
+        <nav>
+            <a href="/adminhome" class="logo">Mess Rebate And Token System</a>
+             <ul>
+                <li><a href="/adminhome">Home</a></li>
+                <li><a href="/adminmenu">Menu</a></li>
+                <li><a href="/adminfeedback">Feedback</a></li>
+                <li><a href="/adminnotification">Notification</a></li>
+                <li><a href="/adminrebates">Rebates</a></li>
+                <li><a href="/adminsearch">Attendance</a></li>
+                <li><a href="/adminform">Forms</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+    
+
+    <main>
+        <h1>Admin Notifications</h1>
+
+        <form action="/adminnotification" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required></textarea><br>
+            <button type="submit" class="add-notification-button">Add Notification</button>
+        </form>
+
+        <div class="previous-notifications">
+            <h2 class="pn">Previous Notifications</h2>
+            <ul>
+                {{#each notifications}}
+                    <li>
+                        <div class="notification-header">
+                            <strong>{{this.title}}</strong>
+                            <span class="notification-date">({{this.date}})</span>
+                        </div>
+                        <div>{{this.content}}</div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </main>
+
+
+
+
+
+</body>
+    <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+</html>

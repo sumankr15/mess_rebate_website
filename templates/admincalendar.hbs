@@ -1,0 +1,239 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Feedback - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/admincalendar.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+
+<header>
+    <nav id="navbar">
+        <a href="/adminhome" class="logo">Mess Rebate And Token System</a>
+        <ul>
+            <li><a href="/adminhome">Home</a></li>
+            <li><a href="/adminmenu">Menu</a></li>
+            <li><a href="/adminfeedback">Feedback</a></li>
+            <li><a href="/adminnotification">Notification</a></li>
+            <li><a href="/adminrebates">Rebates</a></li>
+            <li><a href="/adminsearch">Attendance</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <main>
+        <h1>Attendance for {{username}}</h1>
+
+        <form id="attendance-form" action="/admin/mark" method="POST">
+            <input type="hidden" name="username" value="{{username}}">
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date" required>
+            <label for="meal">Meal:</label>
+            <select name="meal" required>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+            </select>
+            <button type="submit">Mark Attendance</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each attendance}}
+                <tr>
+                    <td>{{this.date}}</td>
+                    <td>{{#if this.breakfast}}✔️{{else}}❌{{/if}}</td>
+                    <td>{{#if this.lunch}}✔️{{else}}❌{{/if}}</td>
+                    <td>{{#if this.dinner}}✔️{{else}}❌{{/if}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+
+    <script>
+        
+        {{!-- document.addEventListener("DOMContentLoaded", function() { --}}
+            const dateInput = document.getElementById("date");
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+        });
+
+
+    </script>
+</body>
+
+
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Calendar - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/admincalendar1.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+
+<header>
+    <nav id="navbar">
+        <a href="/adminhome" class="logo">Mess Rebate And Token System</a>
+        <li>
+            <a href="/adminhome">Home</a></li>
+            <li><a href="/adminmenu">Menu</a></li>
+            <li><a href="/adminfeedback">Feedback</a></li>
+            <li><a href="/adminnotification">Notification</a></li>
+            <li><a href="/adminrebates">Rebates</a></li>
+            <li><a href="/adminsearch">Attendance</a></li>
+            <li><a href="/adminform">Forms</a>
+        </li>
+    </nav>
+</header>
+
+<body>
+    <main>
+        <h1>Attendance Calendar for {{username}}</h1>
+
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <span id="current-month-year"></span>
+            <button id="next-month">&gt;</button>
+        </div>
+
+        <div class="calendar" id="calendar"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+
+    <script>
+        const calendarElement = document.getElementById('calendar');
+        const currentMonthYear = document.getElementById('current-month-year');
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        async function fetchAttendance(username) {
+            const response = await fetch(`/admin/attendance/${username}`);
+            const data = await response.json();
+            return data.attendance || [];
+        }
+
+        function isMealMarked(attendance, date, meal) {
+            const record = attendance.find(a => a.date === date);
+            return record && record[meal];
+        }
+
+        async function generateCalendar(month, year) {
+            const attendance = await fetchAttendance('{{username}}');
+            calendarElement.innerHTML = '';
+
+            const firstDay = new Date(year, month).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            currentMonthYear.innerText = 
+                `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
+            const daysRow = document.createElement('div');
+            daysRow.className = 'days-row';
+            ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day-name';
+                dayElement.innerText = day;
+                daysRow.appendChild(dayElement);
+            });
+            calendarElement.appendChild(daysRow);
+
+            const grid = document.createElement('div');
+            grid.className = 'calendar-grid';
+
+            for (let i = 0; i < firstDay; i++) {
+                grid.appendChild(document.createElement('div'));
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dateElement = document.createElement('div');
+                dateElement.className = 'calendar-day';
+
+                const dateLabel = document.createElement('span');
+                dateLabel.className = 'date-label';
+                dateLabel.innerText = day;
+
+                const breakfast = createMealButton('Breakfast', date, attendance);
+                const lunch = createMealButton('Lunch', date, attendance);
+                const dinner = createMealButton('Dinner', date, attendance);
+
+                dateElement.append(dateLabel, breakfast, lunch, dinner);
+                grid.appendChild(dateElement);
+            }
+            calendarElement.appendChild(grid);
+        }
+
+        function createMealButton(meal, date, attendance) {
+            const button = document.createElement('button');
+            button.className = 'meal-button';
+            button.innerText = meal;
+
+            if (isMealMarked(attendance, date, meal.toLowerCase())) {
+                button.classList.add('marked');
+                button.innerText = `${meal} ✔️`;
+                button.disabled = true;
+            }
+
+            button.onclick = async (event) => {
+                event.preventDefault();
+                const response = await fetch('/admin/mark', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: '{{username}}', date, meal: meal.toLowerCase() })
+                });
+
+                if (response.ok) {
+                    button.classList.add('marked');
+                    button.innerText = `${meal} ✔️`;
+                    button.disabled = true;
+                }
+            };
+
+            return button;
+        }
+
+        document.getElementById('prev-month').onclick = () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar(currentMonth, currentYear);
+        };
+
+        document.getElementById('next-month').onclick = () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar(currentMonth, currentYear);
+        };
+
+        document.addEventListener('DOMContentLoaded', () => generateCalendar(currentMonth, currentYear));
+    </script>
+</body>
+</html>

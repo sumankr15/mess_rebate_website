@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Feedback - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/wardenfeedback.css">
+    <link rel="stylesheet" href="/header.css">
+
+
+
+</head>
+<header>
+
+        <nav id="navbar"> <!-- Add an ID to the nav -->
+            <a href="index.html" class="logo">Mess Rebate And Token System</a>
+
+             <ul>
+                <li><a href="/wardenhome">Home</a></li>
+                <li><a href="/wardenfeedback">Feedback</a></li>
+            </ul>
+
+
+        </nav>
+    </header>
+<body>
+  
+
+    <main>
+        <section class="feedbacks">
+    <h2>All Student Feedbacks</h2>
+    <ul>
+        {{#each feedbacks}}
+            <li>
+                <strong>{{this.studentId.username}}:</strong> 
+                <span class="feedback-text">{{this.feedback}}</span> 
+                <span class="feedback-date">({{this.date}})</span>
+            </li>
+        {{else}}
+            <li>No feedbacks found.</li>
+        {{/each}}
+    </ul>
+</section>
+
+    </main>
+
+   
+</body>
+ <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/login.css">
+    <link rel="stylesheet" href="/login.css">
+
+</head>
+<body>
+      <section class="hero" id="home">
+         
+        <div class="container">
+    <div class="wraper" style="margin-top: -100px;">
+      
+            <div class="form-container">
+               
+               <h1 style="text-align: center;">Login - Warden</h1>
+               <div class="form-inner">
+                  <form action="/login2" class="login" method="post">
+                     <div class="field">
+                        <input type="text" name = "username" placeholder="Username" required>
+                     </div>
+                     <div class="field">
+                        <input type="password" name = "password" placeholder="Password" required>
+                     </div>
+                     <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Login">
+                     </div>
+                     <br>
+                     {{!-- Don't Have an account? <a href="/signup" style="text-decoration:none;">SignUp</a> --}}
+                     {{!-- <br>
+                     <br>
+                     <div class="x">
+                        <a href="/forgot" style="text-decoration:none;">Forgot Password?</a>
+                     </div> --}}
+                  </form>
+                  
+               </div>
+            </div>
+         </div>
+         
+        </div>
+</body>
+</html>

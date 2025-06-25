@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/studentfeedback.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<header>
+        <nav>
+            <a href="/studenthome" class="logo">Mess Rebate And Token System</a>
+            <ul>
+                <li><a href="/studenthome">Home</a></li>
+                <li><a href="/studentmenu">Menu</a></li>
+                <li><a href="/studentfeedback">Feedback</a></li>
+                <li><a href="/studentnotification">Notification</a></li>
+                <li><a href="/rebates">Rebates</a></li>
+                <li><a href="/studentcalendar">Attendance</a></li>
+                <li><a href="/studentform">Form</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+    
+
+    <main>
+        <section class="feedback-form">
+            <h2>Submit Your Feedback</h2>
+            <form action="/submitfeedback" method="POST">
+                <input type="hidden" name="studentId" value="{{studentId}}"> <!-- Hidden field to include studentId -->
+                <div class="textarea-container">
+                    <textarea name="feedback" rows="5" placeholder="Enter Your Feedback" required></textarea>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="previous-feedbacks">
+            <h2>Your Previous Feedbacks</h2>
+            <ul class="feedback-list">
+                {{#each feedbacks}}
+                    <li>
+                        {{this.feedback}} <span>({{this.date}})</span>
+                    </li>
+                {{else}}
+                    <li>No feedbacks found.</li>
+                {{/each}}
+            </ul>
+        </section>
+    </main>
+
+</body>
+    <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+</html>

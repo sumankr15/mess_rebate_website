@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Heading */
+h1 {
+    color: #498896;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Error Message */
+/* p {
+    font-size: 14px;
+    color: red;
+    margin-bottom: 15px;
+} */
+
+/* Form Styling */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input Field */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #498896;
+}
+
+/* Button */
+button {
+    width: 100%;
+    background-color: #498896;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357a81;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    input[type="text"], button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3e5f5; /* Light purple background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full height */
+    overflow: auto; /* Allow scrolling if necessary */
+}
+
+header {
+    background-color: #673ab7; /* Dark purple */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    position: sticky; /* Stick to the top when scrolling */
+    top: 0;
+    z-index: 10; /* Ensure header is above other elements */
+}
+
+/* Main Styles */
+main {
+    flex: 1; /* Allow main to take remaining height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Vertically center the content */
+    padding: 20px; /* Spacing around the content */
+}
+
+/* Calendar Styles */
+.calendar {
+    width: 100%; /* Full width */
+    max-width: 920px; /* Limit maximum width */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 20px;
+    overflow: hidden;
+    margin: 20px 0; /* Space above and below the calendar */
+}
+
+/* Calendar Header */
+.calendar-header {
+    display: flex;
+    justify-content: space-between; /* Align buttons and title */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#prev-month,
+#next-month {
+    background-color: #498896; /* Dark purple */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#prev-month:hover,
+#next-month:hover {
+    background-color: #70a4af;
+}
+
+#current-month-year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #498896;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Days Row */
+.days-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns */
+    text-align: center;
+    font-weight: bold;
+    color: #498896;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns */
+    gap: 10px; /* Space between cells */
+}
+
+/* Individual Days */
+.calendar-day {
+    background-color: #f9f9f9;
+    border: 1px solid #e1bee7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    height: 140px; /* Fixed height for each day */
+    min-width: 100px;
+    border-radius: 5px;
+}
+
+/* Date Label */
+.date-label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* Meal Indicator */
+.meal-indicator {
+    margin: 2px 0;
+    font-size: 0.9rem;
+}
+
+/* Meal Button */
+.meal-button {
+    margin: 2px 0;
+    padding: 5px 8px;
+    background-color: #579eae;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+    width: 90%;
+}
+
+.meal-button:hover {
+    background-color: #98c3cd;
+}
+
+.meal-button.marked {
+    background-color: #62b065;
+    pointer-events: none; /* Disable interaction when marked */
+}
+
+/* Empty Slot */
+.empty-slot {
+    background-color: #e0e0e0;
+    border: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #673ab7;
+    color: white;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Meal Indicator Styles */
+.meal-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    margin: 2px 0;
+}
+
+/* Green tick for marked meals */
+.meal-indicator.marked::before {
+    content: "✔️";
+    color: #4CAF50; /* Green color */
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Red cross for unmarked meals */
+.meal-indicator.unmarked {
+    color: #F44336; /* Red color */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar {
+        width: 100%; /* Full width on small screens */
+    }
+
+    #current-month-year {
+        font-size: 1rem;
+    }
+
+    .calendar-day {
+        height: auto; /* Flexible height */
+    }
+}

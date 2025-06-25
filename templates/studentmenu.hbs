@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Menu</title>
+    <link rel="stylesheet" href="/header.css">
+        <link rel="stylesheet" href="/studentmenu.css">
+
+      <style>
+       /* Styles specific to printing */
+@media print {
+    #printButton, header {
+        display: none; /* Hide the print button and header when printing */
+    }
+
+    body {
+        font-size: 12pt; /* Example: change font size for better readability */
+    }
+
+    nav, footer {
+        display: none; /* Hide the footer and navigation if needed */
+    }
+}
+    </style>
+</head>
+ <header>
+        <nav>
+            <a href="/studenthome" class="logo">Mess Rebate And Token System</a>
+            <ul>
+                <li><a href="/studenthome">Home</a></li>
+                <li><a href="/studentmenu">Menu</a></li>
+                <li><a href="/studentfeedback">Feedback</a></li>
+                <li><a href="/studentnotification">Notification</a></li>
+                <li><a href="/rebates">Rebates</a></li>
+                <li><a href="/studentcalendar">Attendance</a></li>
+                <li><a href="/studentform">Form</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+    
+    <h1>Menu</h1>
+    <div>
+        <h2>Monday</h2>
+        <ul>
+            {{#each menuItems}}
+                {{#if (eq this.day "Monday")}}
+                    <li>
+                        {{this.mealType}} : <strong>{{this.name}}</strong> , {{this.description}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Tuesday</h2>
+        <ul>
+            {{#each menuItems}}
+                {{#if (eq this.day "Tuesday")}}
+                    <li>
+                        {{this.mealType}} : <strong>{{this.name}}</strong> , {{this.description}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Wednesday</h2>
+        <ul>
+            {{#each menuItems}}
+                {{#if (eq this.day "Wednesday")}}
+                    <li>
+                        {{this.mealType}} : <strong>{{this.name}}</strong> , {{this.description}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Thursday</h2>
+        <ul>
+            {{#each menuItems}}
+                {{#if (eq this.day "Thursday")}}
+                    <li>
+                        {{this.mealType}} : <strong>{{this.name}}</strong> , {{this.description}}
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Friday</h2>
+        <ul>
+            {{#each menuItems}}
+                {{#if (eq this.day "Friday")}}
+                    <li>
+                        {{this.mealType}} : <strong>{{this.name}}</strong> , {{this.description}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Saturday</h2>
+        <ul>
+            {{#each menuItems}}
+                {{#if (eq this.day "Saturday")}}
+                    <li>
+                        {{this.mealType}} : <strong>{{this.name}}</strong> , {{this.description}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Sunday</h2>
+        <ul>
+            {{#each menuItems}}
+                {{#if (eq this.day "Sunday")}}
+                    <li>
+                        {{this.mealType}} : <strong>{{this.name}}</strong> , {{this.description}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+    <button id="printButton" onclick="printMenu()">Print Menu</button>
+        <script>
+        function printMenu() {
+            window.print(); // This will print the current page
+        }
+    </script>
+</body>
+    <footer>
+        <p>© 2024 Your School/Institution Name</p>
+    </footer>
+</html>

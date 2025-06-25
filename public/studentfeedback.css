@@ -1,0 +1,157 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3e5f5;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: url('img1.jpg'); /* Background image from admin notification */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Ensure the overlay covers the entire area */
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Overlay with opacity */
+    z-index: 0;
+}
+
+.feedback-form, .previous-feedbacks {
+    position: relative;
+    z-index: 1; /* Ensures form and content appear above the overlay */
+}
+
+/* Feedback Form Section */
+.feedback-form {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.feedback-form h2 {
+    color: #498896; /* Set header color */
+    margin-bottom: 20px;
+}
+
+.feedback-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textarea-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    border: 2px solid #498896;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Ensures proper sizing on all devices */
+}
+
+/* Button Styles */
+button {
+    background-color: #498896;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #7cc7d8;
+}
+
+/* Previous Feedbacks Section */
+.previous-feedbacks {
+    width: 100%;
+    max-width: 600px;
+}
+
+.previous-feedbacks h2 {
+    color: #498896;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Feedback List Styles */
+.feedback-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedback-list li {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Aligns items at the top for long feedbacks */
+    font-size: 16px;
+    word-wrap: break-word; /* Wraps long feedbacks */
+    word-break: break-word; /* Breaks long words */
+    white-space: normal; /* Allows multiple lines */
+}
+
+.feedback-list li span {
+    color: #999;
+    font-size: 14px;
+    white-space: nowrap; /* Ensures date remains on a single line */
+    margin-left: 10px; /* Adds gap between feedback text and date */
+    margin-top: 5px; /* Adjust this value to move the date up/down */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback-form, .previous-feedbacks {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .feedback-list li {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

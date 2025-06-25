@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Feedback - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/adminfeedback.css">
+    <link rel="stylesheet" href="/header.css">
+
+
+
+</head>
+<header>
+
+        <nav id="navbar"> <!-- Add an ID to the nav -->
+            <a href="/adminhome" class="logo">Mess Rebate And Token System</a>
+
+              <ul>
+                <li><a href="/adminhome">Home</a></li>
+                <li><a href="/adminmenu">Menu</a></li>
+                <li><a href="/adminfeedback">Feedback</a></li>
+                <li><a href="/adminnotification">Notification</a></li>
+                <li><a href="/adminrebates">Rebates</a></li>
+                <li><a href="/adminsearch">Attendance</a></li>
+                <li><a href="/adminform">Forms</a></li>
+            </ul>
+
+
+        </nav>
+    </header>
+<body>
+  
+
+    <main>
+        <section class="feedbacks">
+            <h2>All Student Feedbacks</h2>
+            <ul>
+                {{#each feedbacks}}
+                    <li>
+                        <span class="feedback-text">{{this.feedback}}</span>
+                        <span class="feedback-date">({{this.date}})</span>
+                    </li>
+                {{else}}
+                    <li>No feedbacks found.</li>
+                {{/each}}
+            </ul>
+        </section>
+
+    </main>
+
+   
+</body>
+ <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+</html>

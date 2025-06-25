@@ -1,0 +1,138 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+    --primary-color: #f4f4f4;
+    --secondary-color: #333;
+}
+
+/* Dark Mode Support */
+.darkmode {
+    --primary-color: #333;
+    --secondary-color: #f4f4f4;
+}
+
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    font-family: 'Garamond', 'Georgia', serif;
+    background: var(--primary-color);
+    color: #498896;
+    padding: 5px 0; /* Reduced padding to lower the height */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #498896;
+    text-decoration: none;
+    /* Removed transition */
+}
+
+.logo:hover {
+    color: #f6c324;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #498896;
+    text-decoration: none;
+    font-size: 18px;
+    /* Removed transition */
+}
+
+nav ul li a:hover {
+    color: #ff6f61;
+}
+
+/* Main Content Styles */
+main {
+    flex: 1;
+    padding: 80px 20px 20px; /* Add top padding to avoid header overlap */
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 0;
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 100px 20px 20px; /* Increase padding for smaller screens */
+    }
+}
+
+/* Footer Styles */
+footer {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 10px 0;
+    position: relative; /* Ensure footer is at the bottom */
+    margin-top: auto; /* Push footer to the bottom of the page */
+}
+
+/* Footer Responsive Styles */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 0;
+    }
+}

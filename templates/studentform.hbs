@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/studentform.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<header>
+        <nav>
+            <a href="/studenthome" class="logo">Mess Rebate And Token System</a>
+            <ul>
+                <li><a href="/studenthome">Home</a></li>
+                <li><a href="/studentmenu">Menu</a></li>
+                <li><a href="/studentfeedback">Feedback</a></li>
+                <li><a href="/studentnotification">Notification</a></li>
+                <li><a href="/rebates">Rebates</a></li>
+                <li><a href="/studentcalendar">Attendance</a></li>
+                <li><a href="/studentform">Form</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+  <h1>Submit Rebate Form</h1>
+
+  <!-- Form to Submit a New Rebate Request -->
+  <form action="/submitform" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="fromDate">From Date:</label>
+    <input type="date" id="fromDate" name="fromDate" required />
+
+    <label for="toDate">To Date:</label>
+    <input type="date" id="toDate" name="toDate" required />
+
+    <label for="outpass">Upload Outpass:</label>
+    <input type="file" id="outpass" name="outpass" accept=".pdf,.jpg,.png" required />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Display Student's Previously Submitted Forms -->
+  <h2>Your Previous Submissions</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>From Date</th>
+      <th>To Date</th>
+      <th>Status</th>
+      <th>Outpass</th>
+    </tr>
+    {{#each forms}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.fromDate}}</td>
+      <td>{{this.toDate}}</td>
+      <td>{{this.status}}</td>
+      <td><a href="/uploads/{{this.outpass}}" target="_blank">View Outpass</a></td>
+    </tr>
+    {{/each}}
+  </table>
+</body>
+    <footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Menu Item</title>
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/editmenu.css">
+
+</head>
+<header>
+        <nav>
+            <a href="/adminhome" class="logo">Mess Rebate And Token System</a>
+             <ul>
+                <li><a href="/adminhome">Home</a></li>
+                <li><a href="/adminmenu">Menu</a></li>
+                <li><a href="/adminfeedback">Feedback</a></li>
+                <li><a href="/adminnotification">Notification</a></li>
+                <li><a href="/adminrebates">Rebates</a></li>
+                <li><a href="/adminsearch">Attendance</a></li>
+                <li><a href="/adminform">Forms</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+    <h1>Edit Menu Item</h1>
+
+    <form action="/adminmenu/{{menuItem._id}}" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{menuItem.name}}" required><br>
+        
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="{{menuItem.description}}" required><br>
+        
+        <label for="mealType">Meal Type:</label>
+        <select id="mealType" name="mealType" required>
+            <option value="Breakfast" {{#eq menuItem.mealType 'Breakfast'}}selected{{/eq}}>Breakfast</option>
+            <option value="Lunch" {{#eq menuItem.mealType 'Lunch'}}selected{{/eq}}>Lunch</option>
+            <option value="Dinner" {{#eq menuItem.mealType 'Dinner'}}selected{{/eq}}>Dinner</option>
+        </select><br>
+        
+        <label for="day">Day:</label>
+        <select id="day" name="day" required>
+            <option value="Monday" {{#eq menuItem.day 'Monday'}}selected{{/eq}}>Monday</option>
+            <option value="Tuesday" {{#eq menuItem.day 'Tuesday'}}selected{{/eq}}>Tuesday</option>
+            <option value="Wednesday" {{#eq menuItem.day 'Wednesday'}}selected{{/eq}}>Wednesday</option>
+            <option value="Thursday" {{#eq menuItem.day 'Thursday'}}selected{{/eq}}>Thursday</option>
+            <option value="Friday" {{#eq menuItem.day 'Friday'}}selected{{/eq}}>Friday</option>
+            <option value="Saturday" {{#eq menuItem.day 'Saturday'}}selected{{/eq}}>Saturday</option>
+            <option value="Sunday" {{#eq menuItem.day 'Sunday'}}selected{{/eq}}>Sunday</option>
+        </select><br>
+        
+        <button type="submit">Update Item</button>
+    </form>
+</body>
+<footer>
+        <p>&copy; 2024 Mess Rebate and Token System</p>
+    </footer>
+</html>

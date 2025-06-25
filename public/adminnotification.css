@@ -1,0 +1,182 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3e5f5;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: url('img1.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Ensure the overlay covers the entire area */
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(255, 255, 255, 0.5); /* Adjust opacity here */
+    z-index: 0;
+}
+
+form, .previous-notifications {
+    position: relative;
+    z-index: 1; /* Ensures form and content appear above the overlay */
+}
+
+
+/* Form Styles */
+form {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+
+form label {
+    display: block; /* Each label on a new line */
+    margin-top: 10px; /* Space above each label */
+    font-weight: bold; /* Bold for visibility */
+    text-align: left; /* Align text to the left */
+}
+
+form input,
+form textarea {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for comfort */
+    margin-top: 5px; /* Space above inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Button Styles */
+.add-notification-button {
+    background-color: #498896; /* Highlight color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding */
+    margin-top: 15px; /* Space above button */
+    cursor: pointer; /* Pointer on hover */
+    font-weight: bold; /* Bold text */
+    display: block; /* Makes button a block element */
+    margin-left: auto; /* Centers button horizontally */
+    margin-right: auto; /* Centers button horizontally */
+}
+
+.add-notification-button:hover {
+    background-color: #376e7f; /* Darker shade on hover */
+}
+
+/* Header Styles */
+h2 {
+    margin: 0; /* Remove margin */
+    padding: 10px; /* Add padding for readability */
+    color: #042128; /* Stronger color for visibility */
+    /*text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Full width for the heading */
+    position: relative; /* Required for z-index to work */
+    z-index: 2; /* Increase z-index to ensure it's above the overlay */
+}
+h1 {
+    margin: 0; /* Remove margin */
+    padding: 10px; /* Add padding for readability */
+    color: #176778; /* Set header color */
+    /*background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Full width for the heading */
+    border-radius: 5px; /* Rounded corners */
+    position: relative; /* Required for z-index to work */
+    z-index: 2; /* Increase z-index to ensure it's above the overlay */
+}
+
+
+
+.previous-notifications {
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Maximum width for the notifications */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Padding around the notifications */
+}
+
+.previous-notifications h2 {
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #176778; /* Heading color */
+    text-align: center; /* Center the title */
+    font-size: 24px; /* Font size for the title */
+}
+
+/* Notification List Styles */
+.previous-notifications ul {
+    list-style: none; /* No bullets */
+    padding: 0; /* No padding */
+    margin: 0; /* No margin */
+}
+
+.previous-notifications li {
+    /* background-color: #f7f9fa;  */
+    background-color: #ffffff;
+    /* Background color for notifications */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+    padding-top: 5px; /* Padding inside each notification */
+    margin-top: 10px; /* Space between notifications */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* Notification Header Styles */
+.previous-notifications .notification-header {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between title and date */
+    align-items: center; /* Center items vertically */
+}
+
+/* Notification Title Styles */
+.previous-notifications .notification-header strong {
+    color: #498896; /* Title color */
+    font-size: 16px; /* Font size for title */
+}
+
+/* Notification Date Styles */
+.previous-notifications .notification-date {
+    color: #666; /* Slightly darker gray for better visibility */
+    font-size: 14px; /* Font size for date */
+    white-space: nowrap; /* Prevents date from breaking into multiple lines */
+}
+
+/* Notification Content Styles */
+.previous-notifications div {
+    margin-top: 10px; /* Space above content */
+    color: #333; /* Text color for content */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .previous-notifications {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .previous-notifications li {
+        padding: 15px; /* Adjust padding for notifications */
+    }
+}

@@ -1,0 +1,190 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/studentcalendar.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<header>
+    <nav>
+        <a href="/studenthome" class="logo">Mess Rebate And Token System</a>
+        <ul>
+            <li><a href="/studenthome">Home</a></li>
+            <li><a href="/studentmenu">Menu</a></li>
+            <li><a href="/studentfeedback">Feedback</a></li>
+            <li><a href="/studentnotification">Notification</a></li>
+            <li><a href="/rebates">Rebates</a></li>
+            <li><a href="/studentcalendar">Attendance</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+    <main>
+        <h1>Your Attendance</h1>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Breakfast</th>
+                <th>Lunch</th>
+                <th>Dinner</th>
+            </tr>
+            {{#each attendance}}
+            <tr>
+                <td>{{this.date}}</td>
+                <td>{{#if this.breakfast}}✔️{{else}}❌{{/if}}</td>
+                <td>{{#if this.lunch}}✔️{{else}}❌{{/if}}</td>
+                <td>{{#if this.dinner}}✔️{{else}}❌{{/if}}</td>
+            </tr>
+            {{/each}}
+        </table>
+
+    </main>
+</body>
+<footer>
+    <p>&copy; 2024 Mess Rebate and Token System</p>
+</footer>
+</html> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance - Mess Rebate and Token System</title>
+    <link rel="stylesheet" href="/studentcalendar1.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<header>
+    <nav>
+        <a href="/studenthome" class="logo">Mess Rebate And Token System</a>
+        <ul>
+            <li><a href="/studenthome">Home</a></li>
+            <li><a href="/studentmenu">Menu</a></li>
+            <li><a href="/studentfeedback">Feedback</a></li>
+            <li><a href="/studentnotification">Notification</a></li>
+            <li><a href="/rebates">Rebates</a></li>
+            <li><a href="/studentcalendar">Attendance</a></li>
+            <li><a href="/studentform">Form</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+    <main>
+        <h1>Your Attendance Calendar</h1>
+
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <span id="current-month-year"></span>
+            <button id="next-month">&gt;</button>
+        </div>
+
+        <div class="calendar" id="calendar"></div>
+    </main>
+</body>
+<footer>
+    <p>&copy; 2024 Mess Rebate and Token System</p>
+</footer>
+
+<script>
+    const calendarElement = document.getElementById('calendar');
+    const currentMonthYear = document.getElementById('current-month-year');
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    async function fetchAttendance(username) {
+        const response = await fetch(`/student/attendance/${username}`);
+        const data = await response.json();
+        return data.attendance || [];
+    }
+
+    function isMealMarked(attendance, date, meal) {
+        const record = attendance.find(a => a.date === date);
+        return record && record[meal];
+    }
+
+    async function generateCalendar(month, year, username) {
+        const attendance = await fetchAttendance(username);
+        calendarElement.innerHTML = '';
+
+        const firstDay = new Date(year, month).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        currentMonthYear.innerText = 
+            `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
+        const daysRow = document.createElement('div');
+        daysRow.className = 'days-row';
+        ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'day-name';
+            dayElement.innerText = day;
+            daysRow.appendChild(dayElement);
+        });
+        calendarElement.appendChild(daysRow);
+
+        const grid = document.createElement('div');
+        grid.className = 'calendar-grid';
+
+        for (let i = 0; i < firstDay; i++) {
+            grid.appendChild(document.createElement('div'));
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const dateElement = document.createElement('div');
+            dateElement.className = 'calendar-day';
+
+            const dateLabel = document.createElement('span');
+            dateLabel.className = 'date-label';
+            dateLabel.innerText = day;
+
+            const breakfast = createMealIndicator('Breakfast', date, attendance);
+            const lunch = createMealIndicator('Lunch', date, attendance);
+            const dinner = createMealIndicator('Dinner', date, attendance);
+
+            dateElement.append(dateLabel, breakfast, lunch, dinner);
+            grid.appendChild(dateElement);
+        }
+        calendarElement.appendChild(grid);
+    }
+
+    function createMealIndicator(meal, date, attendance) {
+        const indicator = document.createElement('span');
+        indicator.className = 'meal-indicator';
+
+        if (isMealMarked(attendance, date, meal.toLowerCase())) {
+            {{!-- indicator.innerText = `✔️ ${meal}`; --}}
+            indicator.classList.add('marked');
+            indicator.innerText = meal;
+
+        } else {
+            indicator.innerText = `❌ ${meal}`;
+        }
+
+        return indicator;
+    }
+
+    document.getElementById('prev-month').onclick = () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        generateCalendar(currentMonth, currentYear, '{{username}}'); // replace {{username}} with the actual username when rendering the page
+    };
+
+    document.getElementById('next-month').onclick = () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentMonth, currentYear, '{{username}}'); // replace {{username}} with the actual username when rendering the page
+    };
+
+    document.addEventListener('DOMContentLoaded', () => generateCalendar(currentMonth, currentYear, '{{username}}')); // replace {{username}} with the actual username when rendering the page
+</script>
+</html>

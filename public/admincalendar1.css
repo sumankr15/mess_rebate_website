@@ -1,0 +1,152 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1{
+    color: #498896;
+}
+/* Calendar Styles */
+.calendar {
+    width: 90%; /* Responsive width */
+    max-width: 700px; /* Increased max width for better visibility */
+    border: 1px solid #ddd; /* Adds a border around the calendar */
+    border-radius: 10px; /* Rounded corners for the box */
+    overflow: hidden; /* Prevents overflow */
+    background-color: #ffffff; /* White background for contrast */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 10px; /* Inner padding */
+}
+
+/* Calendar Header */
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+/* #current-month-year {
+    font-size: 1.2rem; 
+    font-weight: bold;
+    color: #498896; 
+} */
+
+
+
+#prev-month,
+#next-month {
+    background-color: #498896; /* Dark purple */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+#prev-month:hover,
+#next-month:hover {
+    background-color: #70a4af;
+}
+
+#current-month-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #498896;
+    white-space: nowrap;
+    margin-bottom: 20px; /* Prevent text wrapping */
+}
+
+
+/* Days Row */
+.days-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    color: #498896; /* Header text color */
+    font-size: 0.9rem; /* Day names font size */
+    margin-bottom: 5px; /* Spacing below day names */
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px; /* Small gap between days */
+}
+
+/* Individual Days */
+.calendar-day {
+    border: 1px solid #ddd; /* Light border for separation */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items at the start */
+    padding: 5px; /* Inner padding */
+    height: 170px; /* Increased height for each day box */
+    min-width: 80px; /* Ensure boxes are wide enough */
+    background-color: #f9f9f9; /* Light background for each day */
+}
+
+/* Individual Day Label */
+.date-label {
+    font-size: 1rem; /* Adjust font size for day label */
+    margin-bottom: 5px; /* Space below the date label */
+}
+
+/* Meal Button Styles */
+.meal-button {
+    margin: 2px 0; /* Space between buttons */
+    padding: 5px 8px; /* Padding for better visibility */
+    background-color: #579eae; /* Default button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 0.8rem; /* Smaller font size */
+    width: 90%; /* Full width for buttons */
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+/* Hover and Marked Styles */
+.meal-button:hover {
+    background-color: #98c3cd; /* Darker on hover */
+}
+
+.meal-button.marked {
+    background-color: #62b065; /* Color for marked button */
+    pointer-events: none; /* Disable interaction */
+}
+
+/* Empty Slot */
+.empty-slot {
+    border: none;
+    background-color: #e0e0e0; /* Light gray for empty slots */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar {
+        width: 100%; /* Full width on small screens */
+    }
+
+    #current-month-year {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+}

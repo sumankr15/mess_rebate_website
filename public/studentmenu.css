@@ -1,0 +1,81 @@
+/* General Styles */
+body {
+    font-family: 'Garamond', 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aligns content with space between */
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #498896;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 5px; /* Reduced padding */
+    color: #333; /* Added text color */
+}
+
+/* Print Button Styling */
+#printButton {
+    background-color: #498896;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center; /* Centers the button horizontally */
+    transition: background-color 0.3s ease;
+}
+
+#printButton:hover {
+    background-color: #3e7784;
+}
+
+/* Ensure the button stays at the bottom */
+body > #printButton {
+    margin-top: auto;
+    margin-bottom: 20px; /* Space below the button */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    li {
+        font-size: 16px;
+    }
+
+    #printButton {
+        font-size: 14px;
+    }
+}

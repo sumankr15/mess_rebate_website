@@ -1,0 +1,140 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+     /* background-color: #3aa3a0;  */
+    background:url('img2.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it occupies full height */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 100%;
+    
+    
+  }
+  /* .form-container{
+    
+  } */
+  
+  .wraper {
+    background-color: #fff;
+    padding: 50px; /* Increased padding for larger box */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Increased max width */
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 2.5rem; /* Slightly larger heading */
+    color: #f6c324; /* Deep purple for the heading */
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif; /* Elegant Serif font */
+    text-align: center;
+  }
+  
+  .form-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .field {
+    margin-bottom: 20px;
+  }
+  
+  .field input[type="text"],
+  .field input[type="password"] {
+    width: 100%;
+    padding: 15px; /* Increased padding for input fields */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .field input[type="text"]:focus,
+  .field input[type="password"]:focus {
+    border-color: #EC407A; /* Dark pink border on focus */
+  }
+  
+  .field.btn {
+    position: relative;
+  }
+  
+  .field input[type="submit"] {
+    width: 100%;
+    padding: 15px; /* Increased padding for button */
+    background-color: #498896; /* Dark pink with reduced opacity */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .field input[type="submit"]:hover {
+    background-color: #98c3cd(216, 27, 96, 0.9); /* Darker pink on hover */
+  }
+  
+  .x {
+    text-align: center;
+  }
+  
+  .x a {
+    color: #4A148C; /* Deep purple for links */
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  
+  .x a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Sign-up link styles */
+  a {
+    color: #4A148C; /* Deep purple */
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .wraper {
+      padding: 40px; /* Reduce padding on smaller screens */
+      max-width: 90%; /* Make wrapper take up most of the screen */
+    }
+  
+    h1 {
+      font-size: 2rem; /* Slightly smaller heading on mobile */
+    }
+  
+    .field input[type="submit"] {
+      padding: 12px; /* Adjust button padding for smaller screens */
+    }
+  
+    .field input[type="text"], 
+    .field input[type="password"] {
+      padding: 12px; /* Adjust input padding for smaller screens */
+    }
+  }
+  

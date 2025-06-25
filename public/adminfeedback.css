@@ -1,0 +1,90 @@
+/* Admin Feedback Section Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: url('img1.jpg'); /* Set background image */
+    background-size: cover; /* Ensure the background covers the entire area */
+    background-position: center; /* Center the background image */
+    background-attachment: scroll; /* Allows the background to scroll with the content */
+    overflow: hidden; /* Ensure the background covers the entire area */
+}
+
+/* Overlay to darken the background */
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white overlay */
+    z-index: 0;
+}
+
+/* Feedbacks Section */
+.feedbacks {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    z-index: 1; /* Ensure feedback section appears above the overlay */
+}
+
+.feedbacks h2 {
+    color: #498896;
+    margin-bottom: 20px;
+    font-weight: bold;
+    z-index: 1; /* Ensure title appears above the overlay */
+}
+
+/* Feedback List Styles */
+.feedbacks ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1; /* Ensure list appears above the overlay */
+}
+
+.feedbacks ul li {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for feedback */
+    border: 1px solid #498896; /* Light border around feedback */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    transition: transform 0.2s ease-in-out;
+    z-index: 1; /* Ensure list items appear above the overlay */
+}
+
+.feedbacks ul li:hover {
+    transform: scale(1.02); /* Slight scaling effect */
+    background-color: #e0f7fa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedbacks {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .feedbacks ul li {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
