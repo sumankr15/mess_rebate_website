@@ -32,7 +32,6 @@ Only users with registered credentials (pre-fed usernames and passwords) can acc
 ## ✨ Key Features
 
 ### ✅ Attendance System
-- **QR Code Scanning** for marking attendance at each meal.
 - **Real-Time Tracking** of student meal participation.
 - **Limitations on Meal Skipping**: Students can skip up to **15 out of 90 meals per month**.
 
