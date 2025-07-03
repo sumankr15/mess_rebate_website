@@ -95,3 +95,28 @@ Only users with registered credentials (pre-fed usernames and passwords) can acc
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/sumankr15/mess_rebate_website.git
+
+   ## 🖼️ Screenshots
+
+### 🔐 Login Page
+![Login Screenshot](screen_shots/3.png)
+
+### 🧾 Rebate Dashboard
+![Dashboard Screenshot](screen_shots/2.png)
+
+### 🧾 Student Rebate Form Submission
+![Rebate Form](screen_shots/8.png)
+
+### 🧾 Student Mess Attendence
+![Student Attendence layout](screen_shots/7.png)
+![Admin Attendence layout](screen_shots/5.png)
+
+### 🧾 Notification By Admin
+![Notification](screen_shots/4.png)
+
+### 🧾 Review By Students
+![Notification](screen_shots/6.png)
+
+
+
+
