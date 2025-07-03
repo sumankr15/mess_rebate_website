@@ -38,7 +38,6 @@ Only users with registered credentials (pre-fed usernames and passwords) can acc
 
 ### ✅ Rebate Management
 - **Automated Rebate Calculation** based on attendance and pre-defined policies.
-- **Payment Gateway Integration** for secure rebate processing.
 - **Transparency** in rebate distribution.
 
 ### ✅ Absence Management
