@@ -107,6 +107,9 @@ Only users with registered credentials (pre-fed usernames and passwords) can acc
 ### 🧾 Student Rebate Form Submission
 ![Rebate Form](screen_shots/8.png)
 
+### 🧾 Admin Mess-Menu Management
+![Mess-Menu Update by Admin](screen_shots/1.png)
+
 ### 🧾 Student Mess Attendence
 ![Student Attendence layout](screen_shots/7.png)
 ![Admin Attendence layout](screen_shots/5.png)
