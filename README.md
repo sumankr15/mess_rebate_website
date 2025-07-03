@@ -94,8 +94,8 @@ Only users with registered credentials (pre-fed usernames and passwords) can acc
    ```bash
    git clone https://github.com/sumankr15/mess_rebate_website.git
 
-   ## 🖼️ Screenshots
-
+   
+## 🖼️ Screenshots
 ### 🔐 Login Page
 ![Login Screenshot](screen_shots/3.png)
 
